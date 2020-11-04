@@ -16,7 +16,12 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder(self::CONFIGURATION_ROOT);
 
         $treeBuilder->getRootNode()
-           // TODO: Gros taf a faire ici pour que ca charge la conf du yaml défini ensemble je te laisse galèrer un peu ;)
+            ->children()
+                ->arrayNode('messages')
+                    ->children()
+                    ->end()
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;
