@@ -1,0 +1,38 @@
+{
+    "name": "mpp/message-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony Message Bundle",
+    "keywords": ["yaml", "email", "twig"],
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Gabriel BONDAZ",
+        "email": "gabriel.bondaz@idci-consulting.fr",
+        "homepage": "https://www.idci-consulting.fr"
+      },
+      {
+        "name": "Cyrille DUMORTIER",
+        "email": "cyrille@monpetitplacement.fr"
+      }
+    ],
+    "require": {
+      "php": ">=7.4",
+      "symfony/dependency-injection": "^4.0",
+      "symfony/framework-bundle": "^4.0",
+      "symfony/twig-bundle": "^4.0",
+      "symfony/mailer": "^4.0",
+      "symfony/monolog-bundle": "*"
+    },
+    "autoload":{
+      "psr-4":{
+        "Mpp\\MessageBundle\\": ""
+      },
+      "exclude-from-classmap": [
+        "Resources/",
+        "Tests/"
+      ]
+    },
+    "require-dev": {
+      "phpunit/phpunit": "7"
+    }
+  }

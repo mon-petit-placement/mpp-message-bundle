@@ -1,0 +1,3 @@
+services:
+  Mpp\Message\Provider\MailerProvider:
+    arguments: []
