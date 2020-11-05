@@ -1,3 +1,12 @@
 services:
-  Mpp\Message\Provider\MailerProvider:
-    arguments: []
+
+    Mpp\MessageBundle\Controller\MessageController:
+        public: true
+        tags: ['controller.service_arguments']
+
+    Mpp\MessageBundle\Provider\MessageProvider:
+        public: true
+        arguments:
+            - '@mailer'
+            - '@twig'
+            - '%mpp_message.messages%'

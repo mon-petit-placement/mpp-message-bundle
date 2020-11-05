@@ -21,7 +21,8 @@
       "symfony/framework-bundle": "^4.0",
       "symfony/twig-bundle": "^4.0",
       "symfony/mailer": "^4.0",
-      "symfony/monolog-bundle": "*"
+      "symfony/monolog-bundle": "*",
+      "symfony/options-resolver": "^5.1"
     },
     "autoload":{
       "psr-4":{
