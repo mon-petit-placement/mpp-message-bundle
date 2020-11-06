@@ -20,13 +20,16 @@ class MessageController extends AbstractController
     /**
      * @Route("/send/{messageIdentifier}", name="mpp_message_send")
      */
-    public function send(MessageProvider $message, string $messageIdentifier): JsonResponse
+    public function send(Request $request, MessageProvider $messageProvider, string $messageIdentifier): JsonResponse
     {
         try {
-            $message->send(
+            $messageProvider->send(
                 $messageIdentifier,
-                ['recipientC' => ['joh@doe.com']],
-                []
+                array_merge(
+                    ['recipientC' => ['john@doe.com']],
+                    $request->query->get('transportOptions', [])
+                ),
+                $request->query->get('contents', [])
             );
 
             return new JsonResponse([
