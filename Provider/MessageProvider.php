@@ -45,7 +45,7 @@ final class MessageProvider
 
         if (!empty($message['attachments'])) {
             foreach ($message['attachments'] as $attachment) {
-                $email->attach($attachment['file'], $attachment['name'], $attachment['mime_type']);
+                $email->attach(fopen($attachment['file'], 'r'), $attachment['name'], $attachment['mime_type']);
             }
         }
 
