@@ -6,6 +6,7 @@ namespace Mpp\MessageBundle\Provider;
 
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Part\DataPart;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
 
@@ -22,8 +23,15 @@ final class MessageProvider
         $this->messages = $messages;
     }
 
-    public function send(string $messageIdentifier, array $transportOptions, array $contents): void
-    {
+    /**
+     * @param DataPart[] $attachments
+     */
+    public function send(
+        string $messageIdentifier,
+        array $transportOptions,
+        array $contents,
+        array $attachments = [],
+    ): void {
         $message = $this->getMessageByIdentifier($messageIdentifier);
         $resolvedTransportOptions = self::resolveTransportOptions($transportOptions);
 
@@ -47,6 +55,10 @@ final class MessageProvider
             foreach ($message['attachments'] as $attachment) {
                 $email->attach(fopen($attachment['file'], 'r'), $attachment['name'], $attachment['mime_type']);
             }
+        }
+
+        foreach ($attachments as $attachment) {
+            $email->attachPart($attachment);
         }
 
         $this->mailer->send($email);
