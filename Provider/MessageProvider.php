@@ -58,7 +58,7 @@ final class MessageProvider
         }
 
         foreach ($attachments as $attachment) {
-            $email->attachPart($attachment);
+            $email->addPart($attachment);
         }
 
         $this->mailer->send($email);
