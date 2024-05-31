@@ -1,9 +1,4 @@
 services:
-
-    Mpp\MessageBundle\Controller\MessageController:
-        public: true
-        tags: ['controller.service_arguments']
-
     Mpp\MessageBundle\Provider\MessageProvider:
         public: true
         arguments:
